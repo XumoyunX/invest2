@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Box Icon -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/header.css" %}">
+    <link rel="stylesheet" href="{% static "css/new.css" %}">
+    <link rel="stylesheet" href="{% static "css/footer.css" %}">
+</head>
+<body>
+{% include "layouts/headr.html" %}
+
+<main class="main">
+    <!-- NEW -->
+    <div class="news">
+            <img src="{{  row.photo.url  }}" alt="">
+            <h2 class="title">{{  row.subject_uz }}</h2>
+            <div class="line"></div>
+            <p class="text">{{  row.content_uz }}</p>
+    </div>
+</main>
+
+<!-- FOOTER SECTION -->
+{% include "layouts/footer.html" %}
+
+
+
+
+<script src="{% static "js/main.js" %}"></script>
+</body>
+</html>

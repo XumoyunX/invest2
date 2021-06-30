@@ -1,0 +1,60 @@
+{% load static bootstrap_pagination %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+    <!-- Box Icon -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/header.css" %}">
+    <link rel="stylesheet" href="{% static "css/courses.css" %}">
+    <link rel="stylesheet" href="{% static "css/footer.css" %}">
+</head>
+<body>
+{% include "layouts/headr.html" %}
+
+<main class="main">
+    <!-- OUR COURSES SECTION -->
+    <section class="courses" id="courses">
+        <div class="courses__info">
+            <h1 class="courses__title">ALL NEWS</h1>
+        </div>
+        <div class="courses__container">
+            {% for n in news %}
+                <div class="courses__item">
+                    <div class="courses__item__photo">
+                        <img src="{{ n.photo.url  }}" alt="Photo">
+                    </div>
+                    <div class="courses__item__title">
+                        <h1>{{ n.subject_uz|truncatewords:"5" }}</h1>
+
+                    </div>
+                    <div class="courses__item__description">
+                         <p>{{ n.content_uz|truncatewords:"5" }}</p>
+                    </div>
+                    <div class="ourses__item__button">
+                        <a href="{% url "main:add" n.id %}">Go</a>
+                    </div>
+
+                </div>
+            {% endfor %}
+
+        </div>
+        <div class="courses__next">
+{#            {% bootstrap_paginate row %}#}
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER SECTION -->
+
+{% include "layouts/footer.html" %}
+
+<script src="{% static "js/main.js" %}"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{#{% extends "main/index.html" %}#}
+{% load static %}
+<header class="header">
+    <!-- Header Brand Item -->
+    <div class="brand">
+        <a href="{% url "main:index" %}">
+            <img src="{% static "images/logo-dark.png" %}" alt="Logo">
+        </a>
+
+    </div>
+    <!-- Header Nav Items -->
+    <nav>
+        <ul>
+            <li>
+                <a href="{% url "main:index" %}">Home</a>
+            </li>
+            <li>
+                <a href="{% url "main:courses" %}">Corses</a>
+            </li>
+            <li>
+                <a href="{% url "main:team" %}">Team</a>
+            </li>
+            <li>
+                <a href="{% url "main:news" %}">News</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+            <li class="log__in">
+                <a href="./static/components/log_in/index.html">Log In</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- Header Close Button -->
+    <div class="menu__button">
+        <div class="menu__button__burger"></div>
+    </div>
+</header>
+
+

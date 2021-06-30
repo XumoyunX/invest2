@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurs</title>
+    <link rel="stylesheet" href="{% static "styles/fonts.css" %}">
+    <link rel="stylesheet" href="{% static "fonts/all.min.css" %}">
+    <link rel="stylesheet" href="{% static "styles/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "styles/style.css" %}">
+    <link rel="stylesheet" href="{% static "styles/media.css" %}">
+    {#aa#}
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/header.css" %}">
+    <link rel="stylesheet" href="{% static "css/home.css" %}">
+    <link rel="stylesheet" href="{% static "css/advantages.css" %}">
+    <link rel="stylesheet" href="{% static "css/courses.css" %}">
+    <link rel="stylesheet" href="{% static "css/team.css" %}">
+    <link rel="stylesheet" href="{% static "css/signup.css" %}">
+    <link rel="stylesheet" href="{% static "css/footer.css" %}">
+    {# dd#}
+</head>
+
+<body>
+
+
+<div class="container">
+    <div class="row">
+        <div class="introduction">
+            <h2 class="introduction__title">Introduction</h2>
+            {% for q in courses %}
+                <p class="introduction__text">{{ q.content_uz }}</p>
+            {% endfor %}
+            {#            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci architecto aut commodi culpa ducimus error, ex exercitationem explicabo facere hic illum labore maiores nesciunt quia rerum sequi voluptatem? Blanditiis, harum?</p>#}
+        </div>
+        <div class="video">
+
+            <video class="video__img" autoplay controls src="{{ video.url }}" alt=""></video>
+        </div>
+        <div class="buy">
+            <div class="buys">
+                {#                 {% for c in courses %}#}
+                <h3 class="buys__title">To unlock all lessons buy now</h3>
+                {#                {% endfor %}#}
+                <div class="price">
+                    <p class="price__text">Price:</p>
+                    {% for q in courses %}
+                         <p class="price__num">{{ q.price }}</p>
+                    {% endfor %}
+                </div>
+                <button class="buy__button">BUY</button>
+            </div>
+
+            <div class="plan">
+                <h3 class="plan__title">LESSON PLAN</h3>
+
+                        {% for name in videos %}
+
+
+                        <div class="plan__video">
+                            <div class="line"></div>
+                            {% if  user.is_authenticated and name.id == 1 %}
+                            <i class="fas fa-play-circle"></i>
+                            <h4 class="plan__video-text"><a
+                                    href="{% url "main:kurs_video"  pk name.id %}"> {{ name.soni }}-
+                                dars</a></h4>
+                            {% else %}
+                                <i class="fas fa-lock"></i>
+                                <h4 class="plan__video-text"><a
+                                    href="{% url "main:kurs_video"  pk name.id %}" disabled=""> {{ name.soni }}-
+                                dars</a></h4>
+                            {% endif %}
+
+                        </div>
+            {% endfor %}
+
+
+{#                    {% for name in videos %}#}
+{#                        <div class="plan__video">#}
+{#                            <div class="line"></div>#}
+{#                            <i class="far fa-play-circle"></i>#}
+{#                            <h4 class="plan__video-text"><a#}
+{#                                    href="{% url "main:kurs_video"  pk name.id %}"> {{ name.soni }}-#}
+{#                                dars</a></h4>#}
+{#                        </div>#}
+{#                    {% endfor %}#}
+                
+
+            </div>
+        </div>
+
+        <div class="video__comment mt-5">
+            <h2 class="video__title">Comments</h2>
+            <ul class="comments" id="myUL">
+                <li class="comment">
+                    <div class="person">
+                        <img class="person__img" src="{% static "images/Ellipse 16.png" %}" alt="">
+                        <h4 class="person__title"> Nooshin A.</h4>
+                    </div>
+                    <p class="comment__text">I have watched some of the courses, but this one was awesome and the best.
+                        I wish she helps me in my journey. I aim very high, but without any support. I just have
+                        universe support. I know I don't give up. Thanks for sharing this video.</p>
+                </li>
+                <li class="comment">
+                    <div class="person">
+                        <img class="person__img" src="{% static "images/Ellipse 16.png" %}" alt="">
+                        <h4 class="person__title"> Maureen B.</h4>
+                    </div>
+                    <p class="comment__text">Yes SISTER! I have been toting this for years since I had my "awakening" to
+                        how I was living like I was all masculine in a feminine body. Cycles, deaths, rebirths - also
+                        all feminine principles that allow those "failures" (ie. deaths) to become learning lessons and
+                        birth new directions. I am actually on the job hunt right now - and am so interested in working
+                        with you at Spanx!</p>
+                </li>
+                <li class="comment">
+                    <div class="person">
+                        <img class="person__img" src="{% static "images/Ellipse 16.png" %}" alt="">
+                        <h4 class="person__title"> Maureen B.</h4>
+                    </div>
+                    <p class="comment__text">Yes SISTER! I have been toting this for years since I had my "awakening" to
+                        how I was living like I was all masculine in a feminine body. Cycles, deaths, rebirths - also
+                        all feminine principles that allow those "failures" (ie. deaths) to become learning lessons and
+                        birth new directions. I am actually on the job hunt right now - and am so interested in working
+                        with you at Spanx!</p>
+                </li>
+            </ul>
+            <form class="publish" id="myDIV">
+                <a href="#">
+                    <input id="myInput" class="publish__text" type="text" placeholder="Type to add your comment Salimov H.">
+                    <input onclick="newElement()" class="publish__button" type="button" value="Publish">
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="{% static "scripts/bootstrap.min.js" %}"></script>
+<script src="{% static "scripts/script.js" %}"></script>
+
+</body>
+
+</html>

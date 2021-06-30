@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team</title>
+    <link rel="stylesheet" href="{% static "css/stylete.css" %}">
+</head>
+<body>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="our__team">
+            <h1 class="our__team-title">OUR TEAM</h1>
+            {% for r in biz %}
+                <div class="team">
+                    <div class="team__right">
+                        <img class="team__img" src="{{ r.photo.url }}" alt="img">
+                    </div>
+                    <div class="team__left">
+                        <h2 class="team__title">{{ r.subject_uz }}</h2>
+
+                        <div class="line"></div>
+
+                        <p class="team__text">{{ r.content_uz }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+            <img class="guvohnoma" src="{% static "images/Guvohnoma.jpg" %}" alt="">
+        </div>
+    </div>
+</div>
+
+{#{% include "layouts/footer.html" %}#}
+
+</body>
+</html>
+
+
+
+
